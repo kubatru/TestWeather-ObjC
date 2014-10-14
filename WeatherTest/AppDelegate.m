@@ -2,11 +2,14 @@
 //  AppDelegate.m
 //  WeatherTest
 //
-//  Created by Jakub on 09.10.14.
+//  Created by Jakub Truhlar on 09.10.14.
 //  Copyright (c) 2014 Jakub Truhlar. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
+#import "Constants.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +19,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Crashlytics startWithAPIKey:CrashlyticsApiKey];
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     // Override point for customization after application launch.
     return YES;
 }

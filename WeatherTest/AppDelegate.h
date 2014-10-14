@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  WeatherTest
 //
-//  Created by Jakub on 09.10.14.
+//  Created by Jakub Truhlar on 09.10.14.
 //  Copyright (c) 2014 Jakub Truhlar. All rights reserved.
 //
 

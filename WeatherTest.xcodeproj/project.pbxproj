@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B05D8A019E745DC00AB8B2B /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B05D89C19E745DC00AB8B2B /* ProximaNova-Bold.otf */; };
+		3B05D8A119E745DC00AB8B2B /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B05D89D19E745DC00AB8B2B /* ProximaNova-Light.otf */; };
+		3B05D8A219E745DC00AB8B2B /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B05D89E19E745DC00AB8B2B /* ProximaNova-Regular.otf */; };
+		3B05D8A319E745DC00AB8B2B /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B05D89F19E745DC00AB8B2B /* ProximaNova-Semibold.otf */; };
+		3B05D8A619E7D9DF00AB8B2B /* TestWeatherHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05D8A519E7D9DF00AB8B2B /* TestWeatherHTTPClient.m */; };
+		3B05D8A819E7DB1F00AB8B2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B05D8A719E7DB1F00AB8B2B /* CoreLocation.framework */; };
+		3B05D8E819E984FC00AB8B2B /* WeatherDictionaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */; };
+		3B05D8EE19E9859500AB8B2B /* WeatherDictionaryPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */; };
 		3B1EEAE419E66B0F000E4927 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAE319E66B0E000E4927 /* main.m */; };
 		3B1EEAE719E66B0F000E4927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAE619E66B0F000E4927 /* AppDelegate.m */; };
-		3B1EEAEA19E66B0F000E4927 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAE919E66B0F000E4927 /* FirstViewController.m */; };
-		3B1EEAED19E66B0F000E4927 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAEC19E66B0F000E4927 /* SecondViewController.m */; };
 		3B1EEAF019E66B0F000E4927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EEAEE19E66B0F000E4927 /* Main.storyboard */; };
 		3B1EEAF219E66B0F000E4927 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EEAF119E66B0F000E4927 /* Images.xcassets */; };
 		3B1EEAF519E66B0F000E4927 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EEAF319E66B0F000E4927 /* LaunchScreen.xib */; };
 		3B1EEB0119E66B0F000E4927 /* WeatherTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEB0019E66B0F000E4927 /* WeatherTestTests.m */; };
+		3B1EEB1219E6768B000E4927 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEB0F19E6768B000E4927 /* FirstViewController.m */; };
+		3B1EEB1319E6768B000E4927 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEB1119E6768B000E4927 /* SecondViewController.m */; };
+		3B1EEB1719E678CD000E4927 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1EEB1619E678CD000E4927 /* Crashlytics.framework */; };
+		3B1EEB1A19E6C452000E4927 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEB1919E6C452000E4927 /* ThirdViewController.m */; };
+		3B347B0819EC2503006CF610 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B347B0719EC2503006CF610 /* ForecastCell.xib */; };
+		3B347B0B19EC25C4006CF610 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B347B0A19EC25C4006CF610 /* ForecastCell.m */; };
+		9DCF1989AF10F960F22068D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 559194A863489C9E7539736A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,21 +41,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		078187A7DF439F5529A62369 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3B05D89B19E73E7600AB8B2B /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Classes/Macros.h; sourceTree = "<group>"; };
+		3B05D89C19E745DC00AB8B2B /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Bold.otf"; path = "Data/ProximaNova/ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		3B05D89D19E745DC00AB8B2B /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Light.otf"; path = "Data/ProximaNova/ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		3B05D89E19E745DC00AB8B2B /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Regular.otf"; path = "Data/ProximaNova/ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		3B05D89F19E745DC00AB8B2B /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Semibold.otf"; path = "Data/ProximaNova/ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		3B05D8A419E7D9DF00AB8B2B /* TestWeatherHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestWeatherHTTPClient.h; path = Classes/TestWeatherHTTPClient.h; sourceTree = "<group>"; };
+		3B05D8A519E7D9DF00AB8B2B /* TestWeatherHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestWeatherHTTPClient.m; path = Classes/TestWeatherHTTPClient.m; sourceTree = "<group>"; };
+		3B05D8A719E7DB1F00AB8B2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3B05D8E619E984FC00AB8B2B /* WeatherDictionaryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDictionaryParser.h; path = Classes/WeatherDictionaryParser.h; sourceTree = "<group>"; };
+		3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDictionaryParser.m; path = Classes/WeatherDictionaryParser.m; sourceTree = "<group>"; };
+		3B05D8EC19E9859500AB8B2B /* WeatherDictionaryPackageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDictionaryPackageParser.h; path = Classes/WeatherDictionaryPackageParser.h; sourceTree = "<group>"; };
+		3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDictionaryPackageParser.m; path = Classes/WeatherDictionaryPackageParser.m; sourceTree = "<group>"; };
 		3B1EEADE19E66B0E000E4927 /* WeatherTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EEAE219E66B0E000E4927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EEAE319E66B0E000E4927 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B1EEAE519E66B0F000E4927 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B1EEAE619E66B0F000E4927 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3B1EEAE819E66B0F000E4927 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		3B1EEAE919E66B0F000E4927 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		3B1EEAEB19E66B0F000E4927 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		3B1EEAEC19E66B0F000E4927 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		3B1EEAEF19E66B0F000E4927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B1EEAF119E66B0F000E4927 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B1EEAF419E66B0F000E4927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3B1EEAFA19E66B0F000E4927 /* WeatherTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EEAFF19E66B0F000E4927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EEB0019E66B0F000E4927 /* WeatherTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTestTests.m; sourceTree = "<group>"; };
+		3B1EEB0E19E6768B000E4927 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = Classes/FirstViewController.h; sourceTree = "<group>"; };
+		3B1EEB0F19E6768B000E4927 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = Classes/FirstViewController.m; sourceTree = "<group>"; };
+		3B1EEB1019E6768B000E4927 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = Classes/SecondViewController.h; sourceTree = "<group>"; };
+		3B1EEB1119E6768B000E4927 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = Classes/SecondViewController.m; sourceTree = "<group>"; };
+		3B1EEB1419E676BC000E4927 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
+		3B1EEB1619E678CD000E4927 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		3B1EEB1819E6C452000E4927 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThirdViewController.h; path = Classes/ThirdViewController.h; sourceTree = "<group>"; };
+		3B1EEB1919E6C452000E4927 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThirdViewController.m; path = Classes/ThirdViewController.m; sourceTree = "<group>"; };
+		3B347B0719EC2503006CF610 /* ForecastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
+		3B347B0919EC25C4006CF610 /* ForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForecastCell.h; path = Classes/ForecastCell.h; sourceTree = "<group>"; };
+		3B347B0A19EC25C4006CF610 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForecastCell.m; path = Classes/ForecastCell.m; sourceTree = "<group>"; };
+		3EBA7454993CBBA3AA0FBC81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		559194A863489C9E7539736A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B05D8A819E7DB1F00AB8B2B /* CoreLocation.framework in Frameworks */,
+				3B1EEB1719E678CD000E4927 /* Crashlytics.framework in Frameworks */,
+				9DCF1989AF10F960F22068D6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +106,9 @@
 			children = (
 				3B1EEAE019E66B0E000E4927 /* WeatherTest */,
 				3B1EEAFD19E66B0F000E4927 /* WeatherTestTests */,
+				BF5AE697E85079380C8F4DBA /* Frameworks */,
 				3B1EEADF19E66B0E000E4927 /* Products */,
+				8BD23222D2C7147FA33D8607 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,13 +124,14 @@
 		3B1EEAE019E66B0E000E4927 /* WeatherTest */ = {
 			isa = PBXGroup;
 			children = (
+				3B1EEB0D19E67513000E4927 /* Common */,
+				3B1EEB0A19E674C6000E4927 /* Model */,
+				3B1EEB0B19E674D1000E4927 /* View */,
+				3B1EEB0C19E674D4000E4927 /* Controller */,
 				3B1EEAE519E66B0F000E4927 /* AppDelegate.h */,
 				3B1EEAE619E66B0F000E4927 /* AppDelegate.m */,
-				3B1EEAE819E66B0F000E4927 /* FirstViewController.h */,
-				3B1EEAE919E66B0F000E4927 /* FirstViewController.m */,
-				3B1EEAEB19E66B0F000E4927 /* SecondViewController.h */,
-				3B1EEAEC19E66B0F000E4927 /* SecondViewController.m */,
 				3B1EEAEE19E66B0F000E4927 /* Main.storyboard */,
+				3B347B0719EC2503006CF610 /* ForecastCell.xib */,
 				3B1EEAF119E66B0F000E4927 /* Images.xcassets */,
 				3B1EEAF319E66B0F000E4927 /* LaunchScreen.xib */,
 				3B1EEAE119E66B0E000E4927 /* Supporting Files */,
@@ -101,6 +142,10 @@
 		3B1EEAE119E66B0E000E4927 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B05D89C19E745DC00AB8B2B /* ProximaNova-Bold.otf */,
+				3B05D89D19E745DC00AB8B2B /* ProximaNova-Light.otf */,
+				3B05D89E19E745DC00AB8B2B /* ProximaNova-Regular.otf */,
+				3B05D89F19E745DC00AB8B2B /* ProximaNova-Semibold.otf */,
 				3B1EEAE219E66B0E000E4927 /* Info.plist */,
 				3B1EEAE319E66B0E000E4927 /* main.m */,
 			);
@@ -124,6 +169,69 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3B1EEB0A19E674C6000E4927 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B05D8A419E7D9DF00AB8B2B /* TestWeatherHTTPClient.h */,
+				3B05D8A519E7D9DF00AB8B2B /* TestWeatherHTTPClient.m */,
+				3B05D8E619E984FC00AB8B2B /* WeatherDictionaryParser.h */,
+				3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */,
+				3B05D8EC19E9859500AB8B2B /* WeatherDictionaryPackageParser.h */,
+				3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3B1EEB0B19E674D1000E4927 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B347B0919EC25C4006CF610 /* ForecastCell.h */,
+				3B347B0A19EC25C4006CF610 /* ForecastCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3B1EEB0C19E674D4000E4927 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B1EEB0E19E6768B000E4927 /* FirstViewController.h */,
+				3B1EEB0F19E6768B000E4927 /* FirstViewController.m */,
+				3B1EEB1019E6768B000E4927 /* SecondViewController.h */,
+				3B1EEB1119E6768B000E4927 /* SecondViewController.m */,
+				3B1EEB1819E6C452000E4927 /* ThirdViewController.h */,
+				3B1EEB1919E6C452000E4927 /* ThirdViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3B1EEB0D19E67513000E4927 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3B1EEB1419E676BC000E4927 /* Constants.h */,
+				3B05D89B19E73E7600AB8B2B /* Macros.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		8BD23222D2C7147FA33D8607 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EBA7454993CBBA3AA0FBC81 /* Pods.debug.xcconfig */,
+				078187A7DF439F5529A62369 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF5AE697E85079380C8F4DBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B05D8A719E7DB1F00AB8B2B /* CoreLocation.framework */,
+				3B1EEB1619E678CD000E4927 /* Crashlytics.framework */,
+				559194A863489C9E7539736A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B1EEB0419E66B0F000E4927 /* Build configuration list for PBXNativeTarget "WeatherTest" */;
 			buildPhases = (
+				DBEE656E619855A4A6E4B8B1 /* Check Pods Manifest.lock */,
 				3B1EEADA19E66B0E000E4927 /* Sources */,
 				3B1EEADB19E66B0E000E4927 /* Frameworks */,
 				3B1EEADC19E66B0E000E4927 /* Resources */,
+				7F58A299BFC7449BB91AEDF4 /* Copy Pods Resources */,
+				3B1EEB1519E67723000E4927 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -204,9 +315,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B347B0819EC2503006CF610 /* ForecastCell.xib in Resources */,
+				3B05D8A119E745DC00AB8B2B /* ProximaNova-Light.otf in Resources */,
 				3B1EEAF019E66B0F000E4927 /* Main.storyboard in Resources */,
+				3B05D8A019E745DC00AB8B2B /* ProximaNova-Bold.otf in Resources */,
 				3B1EEAF519E66B0F000E4927 /* LaunchScreen.xib in Resources */,
 				3B1EEAF219E66B0F000E4927 /* Images.xcassets in Resources */,
+				3B05D8A219E745DC00AB8B2B /* ProximaNova-Regular.otf in Resources */,
+				3B05D8A319E745DC00AB8B2B /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,15 +335,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B1EEB1519E67723000E4927 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run a1cd910fc743ca25d5726b521e7283768303ab28 6541c06267a36d730a77a8204aae05f9ae5a37f089203b0b6dc082f83ba09e30";
+		};
+		7F58A299BFC7449BB91AEDF4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBEE656E619855A4A6E4B8B1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3B1EEADA19E66B0E000E4927 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1EEAED19E66B0F000E4927 /* SecondViewController.m in Sources */,
+				3B347B0B19EC25C4006CF610 /* ForecastCell.m in Sources */,
+				3B1EEB1319E6768B000E4927 /* SecondViewController.m in Sources */,
+				3B1EEB1A19E6C452000E4927 /* ThirdViewController.m in Sources */,
 				3B1EEAE719E66B0F000E4927 /* AppDelegate.m in Sources */,
-				3B1EEAEA19E66B0F000E4927 /* FirstViewController.m in Sources */,
+				3B1EEB1219E6768B000E4927 /* FirstViewController.m in Sources */,
+				3B05D8EE19E9859500AB8B2B /* WeatherDictionaryPackageParser.m in Sources */,
 				3B1EEAE419E66B0F000E4927 /* main.m in Sources */,
+				3B05D8A619E7D9DF00AB8B2B /* TestWeatherHTTPClient.m in Sources */,
+				3B05D8E819E984FC00AB8B2B /* WeatherDictionaryParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +514,15 @@
 		};
 		3B1EEB0519E66B0F000E4927 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EBA7454993CBBA3AA0FBC81 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WeatherTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -357,9 +530,15 @@
 		};
 		3B1EEB0619E66B0F000E4927 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 078187A7DF439F5529A62369 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WeatherTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -418,6 +597,7 @@
 				3B1EEB0619E66B0F000E4927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3B1EEB0719E66B0F000E4927 /* Build configuration list for PBXNativeTarget "WeatherTestTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +606,7 @@
 				3B1EEB0919E66B0F000E4927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
