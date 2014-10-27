@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="ProximaNova-Light.otf">
@@ -24,28 +24,47 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VsY-jd-6Na" id="rRe-ai-Tgv">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fh-DX-UTu">
-                        <rect key="frame" x="84" y="18" width="122" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="8Fh-DX-UTu">
+                        <rect key="frame" x="84" y="18" width="110" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="PBA-lN-Vwm"/>
+                            <constraint firstAttribute="height" constant="21" id="Qqy-FZ-g5a"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-fE-cOO">
-                        <rect key="frame" x="84" y="42" width="122" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-fE-cOO">
+                        <rect key="frame" x="84" y="42" width="110" height="21"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeR-J8-Cw7">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OeR-J8-Cw7">
                         <rect key="frame" x="8" y="13" width="60" height="60"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGg-GE-kdA">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZGg-GE-kdA">
                         <rect key="frame" x="214" y="17" width="98" height="55"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="55"/>
                         <color key="textColor" red="0.1843137255" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="OeR-J8-Cw7" secondAttribute="bottom" constant="3" id="07L-Hm-Id4"/>
+                    <constraint firstItem="jYg-fE-cOO" firstAttribute="top" secondItem="8Fh-DX-UTu" secondAttribute="bottom" constant="3" id="12a-I6-K3l"/>
+                    <constraint firstItem="8Fh-DX-UTu" firstAttribute="leading" secondItem="OeR-J8-Cw7" secondAttribute="trailing" constant="16" id="36A-J8-WdS"/>
+                    <constraint firstItem="8Fh-DX-UTu" firstAttribute="leading" secondItem="rRe-ai-Tgv" secondAttribute="leading" constant="84" id="GVn-Eh-kxX"/>
+                    <constraint firstItem="8Fh-DX-UTu" firstAttribute="top" secondItem="rRe-ai-Tgv" secondAttribute="topMargin" constant="10" id="UPQ-C9-Z2m"/>
+                    <constraint firstItem="8Fh-DX-UTu" firstAttribute="leading" secondItem="jYg-fE-cOO" secondAttribute="leading" id="Uks-d7-CCM"/>
+                    <constraint firstItem="8Fh-DX-UTu" firstAttribute="trailing" secondItem="jYg-fE-cOO" secondAttribute="trailing" id="dOj-oq-XNm"/>
+                    <constraint firstItem="ZGg-GE-kdA" firstAttribute="baseline" secondItem="jYg-fE-cOO" secondAttribute="baseline" id="dYM-Gb-3vT"/>
+                    <constraint firstItem="ZGg-GE-kdA" firstAttribute="trailing" secondItem="rRe-ai-Tgv" secondAttribute="trailingMargin" id="gOw-qf-eOJ"/>
+                    <constraint firstItem="OeR-J8-Cw7" firstAttribute="leading" secondItem="rRe-ai-Tgv" secondAttribute="leadingMargin" id="lLb-k2-nFG"/>
+                    <constraint firstItem="ZGg-GE-kdA" firstAttribute="leading" secondItem="8Fh-DX-UTu" secondAttribute="trailing" constant="20" id="re3-k4-oWU"/>
+                    <constraint firstItem="ZGg-GE-kdA" firstAttribute="top" secondItem="rRe-ai-Tgv" secondAttribute="topMargin" constant="9" id="uHI-zm-dnt"/>
+                    <constraint firstItem="OeR-J8-Cw7" firstAttribute="top" secondItem="rRe-ai-Tgv" secondAttribute="topMargin" constant="5" id="y3p-je-eLe"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="forecastDayLabel" destination="8Fh-DX-UTu" id="OMA-Oh-BNc"/>

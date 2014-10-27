@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - SWTableViewCell (0.3.5)
 
 DEPENDENCIES:
   - AFNetworking
+  - SWTableViewCell
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  SWTableViewCell: da159b491b1253446ffbcabcfa94e6a4c94bf04b
 
 COCOAPODS: 0.34.2

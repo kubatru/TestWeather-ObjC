@@ -18,6 +18,7 @@
 + (WeatherHTTPClient *)sharedWeatherHTTPClient;
 - (instancetype)initWithBaseURL:(NSURL *)url;
 - (void)updateWeatherAtLocation:(CLLocation *)location forNumberOfDays:(NSUInteger)number;
+- (void)updateWeatherAtLocation:(CLLocation *)location withIndex:(NSUInteger)index;
 
 @end
 
@@ -25,6 +26,7 @@
 
 @optional
 -(void)weatherHTTPClient:(WeatherHTTPClient *)client didUpdateWithWeather:(id)weather;
+-(void)weatherHTTPClient:(WeatherHTTPClient *)client didUpdateWithWeather:(id)weather withIndex:(NSUInteger)index;
 -(void)weatherHTTPClient:(WeatherHTTPClient *)client didFailWithError:(NSError *)error;
 
 @end

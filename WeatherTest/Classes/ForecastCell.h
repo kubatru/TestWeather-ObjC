@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface ForecastCell : UITableViewCell
+@interface ForecastCell : SWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *forecastDayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *forecastDescriptionLabel;

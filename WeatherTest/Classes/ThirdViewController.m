@@ -20,6 +20,9 @@
     // Change graphics
     [self applyAppearance];
     
+    // Swipe gesture
+    [self swipeGesture];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -41,7 +44,14 @@
     // setBackgroundImage must be defined to use to the image shadowImage method
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    
+    // Footer Separator
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-top"]];
+    separator.frame = CGRectMake(0, 0, 736, 1); // max width (iP6+) is 736p so its easiest to do set is fixed since we dont have a landscape mod in the app
+    self.tableView.tableFooterView = separator;
 }
+
+#pragma mark - tableView
 
 // Section text
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -55,7 +65,7 @@
     
     // Separator
     UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-top"]];
-    separator.frame = CGRectMake(0, 50, 320, 1);
+    separator.frame = CGRectMake(0, 50, 736, 1); // max width (iP6+) is 736p so its easiest to do set is fixed since we dont have a landscape mod in the app
     
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
@@ -64,18 +74,6 @@
     headerView.backgroundColor = [UIColor whiteColor];
     
     return headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    // Separator
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-top"]];
-    separator.frame = CGRectMake(0, 0, 320, 1);
-    
-    UIView *footerView = [[UIView alloc] init];
-    [footerView addSubview:separator];
-    
-    return footerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -92,9 +90,9 @@
 {
     // Values
     NSString *CellIdentifier = @"Cell";
-    _cellsTitle = [NSArray arrayWithObjects:@"Unit of lenght",@"Unit of temperature",nil];
+    _cellsTitle = [NSArray arrayWithObjects:@"Unit of length",@"Unit of temperature",nil];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaults = [NSUserDefaults standardUserDefaults];
     NSString *distanceValue = [defaults objectForKey:@"DistanceValue"];
     NSString *temperatureValue = [defaults objectForKey:@"TemperatureValue"];
     
@@ -108,7 +106,7 @@
     // CONFIGURE A CELL
     // Separator
     UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-mid"]];
-    separator.frame = CGRectMake(15, 0, 320, 1);
+    separator.frame = CGRectMake(15, 0, 736, 1); // max width (iP6+) is 736p so its easiest to do set is fixed since we dont have a landscape mod in the app
     [cell.contentView addSubview:separator];
     
     // Size, Color, Font
@@ -129,7 +127,6 @@
         cell.detailTextLabel.text = temperatureValue;
     }
     
-    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     return cell;
 }
 
@@ -140,28 +137,148 @@
     
     // Change the settings
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaults = [NSUserDefaults standardUserDefaults];
     
-    // Change the defaults
-    if ([cell.detailTextLabel.text isEqual: @"Meters"]) {
-        cell.detailTextLabel.text = @"Feet";
-        [defaults setObject:cell.detailTextLabel.text forKey:@"DistanceValue"];
+    // ActionSheets iOS7
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        
+        iOS7actionSheetcell = [tableView cellForRowAtIndexPath:indexPath];
+        if ([tableView indexPathForCell:cell].row == 0) {
+            
+            // Length ActionSheet
+            UIActionSheet *actionSheetLength = [[UIActionSheet alloc] initWithTitle:@"Unit of length" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"Meters", @"Feet", nil];
+            actionSheetLength.tag = 1;
+            [actionSheetLength showInView:[UIApplication sharedApplication].keyWindow];
+        }
+        
+        else if ([tableView indexPathForCell:cell].row == 1) {
+            
+            // Temperature ActionSheet
+            UIActionSheet *actionSheetTemperature = [[UIActionSheet alloc] initWithTitle:@"Unit of temperature" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"Celsius", @"Fahrenheit", nil];
+            actionSheetTemperature.tag = 2;
+            [actionSheetTemperature showInView:[UIApplication sharedApplication].keyWindow];
+        }
     }
     
-    else if ([cell.detailTextLabel.text isEqual: @"Feet"]) {
-        cell.detailTextLabel.text = @"Meters";
-        [defaults setObject:cell.detailTextLabel.text forKey:@"DistanceValue"];
+    // ActionSheets iOS8+
+    else {
+        
+        if ([tableView indexPathForCell:cell].row == 0) {
+            
+            // Length ActionSheet
+            UIAlertController *actionSheetLength = [UIAlertController alertControllerWithTitle:@"Unit of length" message:@"Select your unit" preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            UIAlertAction *meters = [UIAlertAction actionWithTitle:@"Meters" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                cell.detailTextLabel.text = @"Meters";
+                [defaults setObject:@"Meters" forKey:@"DistanceValue"];
+                [actionSheetLength dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            UIAlertAction *feet = [UIAlertAction actionWithTitle:@"Feet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                cell.detailTextLabel.text = @"Feet";
+                [defaults setObject:@"Feet" forKey:@"DistanceValue"];
+                [actionSheetLength dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [actionSheetLength dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            [actionSheetLength addAction:meters];
+            [actionSheetLength addAction:feet];
+            [actionSheetLength addAction:cancel];
+            [self presentViewController:actionSheetLength animated:YES completion:nil];
+        }
+        
+        else if ([tableView indexPathForCell:cell].row == 1) {
+            
+            // Temperature ActionSheet
+            UIAlertController *actionSheetTemperature = [UIAlertController alertControllerWithTitle:@"Unit of temperature" message:@"Select your unit" preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            UIAlertAction *celsius = [UIAlertAction actionWithTitle:@"Celsius" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                cell.detailTextLabel.text = @"Celsius";
+                [defaults setObject:@"Celsius" forKey:@"TemperatureValue"];
+                [actionSheetTemperature dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            UIAlertAction *fahrenheit = [UIAlertAction actionWithTitle:@"Fahrenheit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                cell.detailTextLabel.text = @"Fahrenheit";
+                [defaults setObject:@"Fahrenheit" forKey:@"TemperatureValue"];
+                [actionSheetTemperature dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [actionSheetTemperature dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            [actionSheetTemperature addAction:celsius];
+            [actionSheetTemperature addAction:fahrenheit];
+            [actionSheetTemperature addAction:cancel];
+            [self presentViewController:actionSheetTemperature animated:YES completion:nil];
+        }
     }
+}
+
+#pragma mark - iOS 7- ActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    else if ([cell.detailTextLabel.text isEqual: @"Celsius"]){
-        cell.detailTextLabel.text = @"Fahrenheit";
-        [defaults setObject:cell.detailTextLabel.text forKey:@"TemperatureValue"];
+    switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    iOS7actionSheetcell.detailTextLabel.text = @"Meters";
+                    [defaults setObject:@"Meters" forKey:@"DistanceValue"];
+                    break;
+                case 1:
+                    iOS7actionSheetcell.detailTextLabel.text = @"Feet";
+                    [defaults setObject:@"Feet" forKey:@"DistanceValue"];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        case 2: {
+            switch (buttonIndex) {
+                case 0:
+                    iOS7actionSheetcell.detailTextLabel.text = @"Celsius";
+                    [defaults setObject:@"Celsius" forKey:@"TemperatureValue"];
+                    break;
+                case 1:
+                    iOS7actionSheetcell.detailTextLabel.text = @"Fahrenheit";
+                    [defaults setObject:@"Fahrenheit" forKey:@"TemperatureValue"];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
     }
+}
+
+#pragma mark - Gestures
+
+- (void)swipeGesture {
+    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
+    [swipeRightRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipeRightRecognizer];
     
-    else if ([cell.detailTextLabel.text isEqual: @"Fahrenheit"]){
-        cell.detailTextLabel.text = @"Celsius";
-        [defaults setObject:cell.detailTextLabel.text forKey:@"TemperatureValue"];
-    }
+    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
+    [swipeLeftRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:swipeLeftRecognizer];
+}
+
+- (void)swipeRight {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] - 1)];
+}
+
+- (void)swipeLeft {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] + 1)];
 }
 
 - (void)didReceiveMemoryWarning {

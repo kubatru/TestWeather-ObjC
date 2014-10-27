@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "WeatherDictionaryPackageParser.h"
 #import "WeatherDictionaryParser.h"
+#import "LocationViewController.h"
 
 static NSString *globalCityName;
 static NSMutableArray *forecastDays;
@@ -26,9 +27,68 @@ static NSMutableArray *forecastAverageFs;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    // Get the coordinations
-    // We dont have a refresh button so we can refresh content everytime user come here
-    [self.locationManager startUpdatingLocation];
+    [self determineTheLocation];
+}
+
+- (void)determineTheLocation
+{
+    if (![defaults objectForKey:@"SelectedLocation"] || [[NSString stringWithFormat:@"%@",[[defaults objectForKey:@"SelectedLocation"] objectAtIndex:0]] isEqualToString:@"Current"]) {
+        
+        [self.locationManager startUpdatingLocation];
+    }
+    
+    if ([defaults objectForKey:@"SelectedLocation"] && ![[NSString stringWithFormat:@"%@",[[defaults objectForKey:@"SelectedLocation"] objectAtIndex:0]] isEqualToString:@"Current"]) {
+        
+        NSString *latitudeString = [NSString stringWithFormat:@"%@",[[defaults objectForKey:@"SelectedLocation"] objectAtIndex:0]];
+        NSString *longitudeString = [NSString stringWithFormat:@"%@",[[defaults objectForKey:@"SelectedLocation"] objectAtIndex:1]];
+        
+        double latitude = [latitudeString doubleValue];
+        double longitude = [longitudeString doubleValue];
+        
+        CLLocation *requestedLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+        
+        // send the location to weather client
+        WeatherHTTPClient *client = [WeatherHTTPClient sharedWeatherHTTPClient];
+        client.delegate = self;
+        [client updateWeatherAtLocation:requestedLocation forNumberOfDays:5];
+        
+        // Coordinations back to the name of my city and country
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation: requestedLocation completionHandler:
+         ^(NSArray *placemarks, NSError *error) {
+             
+             //Get nearby address
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             
+             //String to hold address
+             _locationLabel.text = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.country];
+             
+             // Hide green arrow + label and show centereLabel
+             _greenArrow.hidden = true;
+             
+             _centeredLocationLabel.text = _locationLabel.text;
+             _locationLabel.hidden = true;
+             _centeredLocationLabel.hidden = false;
+             
+             globalCityName = [NSString stringWithFormat:@"%@", placemark.locality];
+             
+             // Post notification
+             [[NSNotificationCenter defaultCenter] postNotificationName:kCoordinatesWereDecodedToCityNameNotification object:nil];
+         }];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Show tabBar after transition (From Location screen)
+    self.tabBarController.tabBar.hidden = false;
+    self.navigationItem.rightBarButtonItem.enabled = true;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    // Unfortunately we can't trigger action with custom navigationItems, so i decided disable button after first click this way (prevent trigger twice)
+    self.navigationItem.rightBarButtonItem.enabled = false;
 }
 
 - (void)viewDidLoad {
@@ -36,7 +96,7 @@ static NSMutableArray *forecastAverageFs;
     // Set NSUserDefaults
     defaults = [NSUserDefaults standardUserDefaults];
     
-    // Check if its already exists
+    // Check if settings already exists
     if (!([defaults objectForKey:@"DistanceValue"] || [defaults objectForKey:@"TemperatureValue"])) {
         
         NSString *distanceValue = @"Meters";
@@ -46,8 +106,19 @@ static NSMutableArray *forecastAverageFs;
         [defaults setObject:temperatureValue forKey:@"TemperatureValue"];
     }
     
+    // Check if array with cities already exists
+    if (![defaults objectForKey:@"Cities"]) {
+        
+        NSMutableArray *cities = [[NSMutableArray alloc] init];
+        [cities addObject:@"reserved for current location"];
+        [defaults setObject:cities forKey:@"Cities"];
+    }
+    
     // Change graphics
     [self applyAppearance];
+    
+    // Swipe gesture
+    [self swipeGesture];
     
     [super viewDidLoad];
     
@@ -63,8 +134,6 @@ static NSMutableArray *forecastAverageFs;
     
     // Track the reachability
     [self startReachabilityNotification];
-    
-    
 }
 
 - (void)startReachabilityNotification
@@ -83,7 +152,7 @@ static NSMutableArray *forecastAverageFs;
             case AFNetworkReachabilityStatusReachableViaWWAN:
                 // NSLog(@"Cellular");
                 // Get the coordinations
-                [self.locationManager startUpdatingLocation];
+                [self determineTheLocation];
                 break;
                 
             default:
@@ -107,9 +176,12 @@ static NSMutableArray *forecastAverageFs;
     
     // Remove border + shadow and changing it to the image
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageNamed:@"Line"];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"Line"]];
+    
+    // Custom barButtonItem
+    [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"Location"]];
 }
- 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -123,8 +195,8 @@ static NSMutableArray *forecastAverageFs;
     CLLocation *newLocation = [locations lastObject];
     
     // If the location is more than 10 minutes old, ignore it
-    if([newLocation.timestamp timeIntervalSinceNow] > 600)
-    {
+    if([newLocation.timestamp timeIntervalSinceNow] > 600) {
+        
         return;
     }
     
@@ -135,26 +207,28 @@ static NSMutableArray *forecastAverageFs;
     WeatherHTTPClient *client = [WeatherHTTPClient sharedWeatherHTTPClient];
     client.delegate = self;
     [client updateWeatherAtLocation:newLocation forNumberOfDays:5];
-    
+        
     // Coordinations back to the name of my city and country
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation: _locationManager.location completionHandler:
-     ^(NSArray *placemarks, NSError *error) {
-         
-         //Get nearby address
-         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-         
-         //String to hold address
-         _locationLabel.text = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.country];
-         
-         // Show green arrow
-         _greenArrow.hidden = false;
-         
-         globalCityName = [NSString stringWithFormat:@"%@", placemark.locality];
-         
-         // Post notification
-         [[NSNotificationCenter defaultCenter] postNotificationName:kCoordinatesWereDecodedToCityNameNotification object:nil];
-     }];
+        ^(NSArray *placemarks, NSError *error) {
+            
+            //Get nearby address
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             
+            //String to hold address
+            _locationLabel.text = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.country];
+            
+            // Show green arrow + label and hide centeredLabel
+            _greenArrow.hidden = false;
+            _locationLabel.hidden = false;
+            _centeredLocationLabel.hidden = true;
+            
+            globalCityName = [NSString stringWithFormat:@"%@", placemark.locality];
+            
+            // Post notification
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCoordinatesWereDecodedToCityNameNotification object:nil];
+    }];
 }
 
 # pragma mark - Global variables
@@ -217,16 +291,29 @@ static NSMutableArray *forecastAverageFs;
     // Do not forget to select an image for the weather description
     UIImage *image = [UIImage imageNamed:@"Sun_Big"];
     
-    if ([self.weather.currentCondition.weatherDescription isEqualToString:@"Cloudy"] || [self.weather.currentCondition.weatherDescription isEqualToString:@"Partly Cloudy"]) {
+    // Check all states at worldweatheronline.com/feed/wwoConditionCodes.txt
+    if ([self.weather.currentCondition.weatherDescription rangeOfString:@"cloudy" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         image = [UIImage imageNamed:@"Cloudy_Big"];
     }
     
-    else if ([self.weather.currentCondition.weatherDescription isEqualToString:@"Windy"] || [self.weather.currentCondition.weatherDescription isEqualToString:@"Partly Windy"]) {
+    else if ([self.weather.currentCondition.weatherDescription rangeOfString:@"overcast" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Cloudy_Big"];
+    }
+    
+    else if ([self.weather.currentCondition.weatherDescription rangeOfString:@"blow" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         image = [UIImage imageNamed:@"WInd_Big"];
     }
     
-    else if ([self.weather.currentCondition.weatherDescription isEqualToString:@"Lightning"]) {
-        image = [UIImage imageNamed:@"Lightning-Big"];
+    else if ([self.weather.currentCondition.weatherDescription rangeOfString:@"drizzle" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
+    }
+    
+    else if ([self.weather.currentCondition.weatherDescription rangeOfString:@"shower" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
+    }
+    
+    else if ([self.weather.currentCondition.weatherDescription rangeOfString:@"rain" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
     }
     
     _weatherImage.image = image;
@@ -280,6 +367,26 @@ static NSMutableArray *forecastAverageFs;
         UIActivityViewController *activityController =[[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
         [self presentViewController:activityController animated:YES completion:nil];
     }
+}
+
+#pragma mark - Gestures
+
+- (void)swipeGesture {
+    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
+    [swipeRightRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipeRightRecognizer];
+    
+    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
+    [swipeLeftRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:swipeLeftRecognizer];
+}
+
+- (void)swipeRight {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] - 1)];
+}
+
+- (void)swipeLeft {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] + 1)];
 }
 
 #pragma mark - Convertors

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *centeredLocationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *greenArrow;
 
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
@@ -35,12 +36,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
 @property(strong) NSDictionary *weather;
+@property(strong) NSDictionary *currentLocation;
 
 + (NSString*) globalCityNameString;
 + (NSMutableArray*) forecastDaysArray;
 + (NSMutableArray*) forecastDescriptionsArray;
 + (NSMutableArray*) forecastAverageCArray;
 + (NSMutableArray*) forecastAverageFArray;
-
 @end
 

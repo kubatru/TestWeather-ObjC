@@ -9,7 +9,7 @@
 #import "TestWeatherHTTPClient.h"
 #import "Constants.h"
 
-// Set this to your World Weather Online API Key
+// My World Weather Online API Key
 static NSString *const WorldWeatherOnlineAPIKey = WorldWeatherOnlineApiKey;
 
 static NSString *const WorldWeatherOnlineURLString = @"http://api.worldweatheronline.com/free/v1/";
@@ -52,6 +52,25 @@ static NSString *const WorldWeatherOnlineURLString = @"http://api.worldweatheron
     [self GET:@"weather.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([self.delegate respondsToSelector:@selector(weatherHTTPClient:didUpdateWithWeather:)]) {
             [self.delegate weatherHTTPClient:self didUpdateWithWeather:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(weatherHTTPClient:didFailWithError:)]) {
+            [self.delegate weatherHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
+- (void)updateWeatherAtLocation:(CLLocation *)location withIndex:(NSUInteger)index
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"q"] = [NSString stringWithFormat:@"%f,%f",location.coordinate.latitude,location.coordinate.longitude];
+    parameters[@"format"] = @"json";
+    parameters[@"key"] = WorldWeatherOnlineAPIKey;
+    
+    [self GET:@"weather.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(weatherHTTPClient:didUpdateWithWeather: withIndex:)]) {
+            [self.delegate weatherHTTPClient:self didUpdateWithWeather:responseObject withIndex:index];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(weatherHTTPClient:didFailWithError:)]) {

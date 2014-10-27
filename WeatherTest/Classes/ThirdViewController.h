@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ThirdViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
+
+{
+    NSUserDefaults *defaults;
+    UITableViewCell *iOS7actionSheetcell;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSArray *cellsTitle;

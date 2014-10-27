@@ -15,6 +15,9 @@
 		3B05D8A819E7DB1F00AB8B2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B05D8A719E7DB1F00AB8B2B /* CoreLocation.framework */; };
 		3B05D8E819E984FC00AB8B2B /* WeatherDictionaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */; };
 		3B05D8EE19E9859500AB8B2B /* WeatherDictionaryPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */; };
+		3B16880019F810EF00096450 /* SearchLocationHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1687FF19F810EF00096450 /* SearchLocationHTTPClient.m */; };
+		3B16880319F82DD800096450 /* SearchLocationDictionaryPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16880219F82DD800096450 /* SearchLocationDictionaryPackageParser.m */; };
+		3B16880619F8337F00096450 /* SearchLocationDictionaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B16880519F8337F00096450 /* SearchLocationDictionaryParser.m */; };
 		3B1EEAE419E66B0F000E4927 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAE319E66B0E000E4927 /* main.m */; };
 		3B1EEAE719E66B0F000E4927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEAE619E66B0F000E4927 /* AppDelegate.m */; };
 		3B1EEAF019E66B0F000E4927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EEAEE19E66B0F000E4927 /* Main.storyboard */; };
@@ -27,6 +30,8 @@
 		3B1EEB1A19E6C452000E4927 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EEB1919E6C452000E4927 /* ThirdViewController.m */; };
 		3B347B0819EC2503006CF610 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B347B0719EC2503006CF610 /* ForecastCell.xib */; };
 		3B347B0B19EC25C4006CF610 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B347B0A19EC25C4006CF610 /* ForecastCell.m */; };
+		3BC9EBDE19F02B14002F4A08 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9EBDD19F02B14002F4A08 /* SearchViewController.m */; };
+		3BE54DBB19F0114D00F5A20B /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE54DBA19F0114D00F5A20B /* LocationViewController.m */; };
 		9DCF1989AF10F960F22068D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 559194A863489C9E7539736A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,12 @@
 		3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDictionaryParser.m; path = Classes/WeatherDictionaryParser.m; sourceTree = "<group>"; };
 		3B05D8EC19E9859500AB8B2B /* WeatherDictionaryPackageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDictionaryPackageParser.h; path = Classes/WeatherDictionaryPackageParser.h; sourceTree = "<group>"; };
 		3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDictionaryPackageParser.m; path = Classes/WeatherDictionaryPackageParser.m; sourceTree = "<group>"; };
+		3B1687FE19F810EF00096450 /* SearchLocationHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocationHTTPClient.h; path = Classes/SearchLocationHTTPClient.h; sourceTree = "<group>"; };
+		3B1687FF19F810EF00096450 /* SearchLocationHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocationHTTPClient.m; path = Classes/SearchLocationHTTPClient.m; sourceTree = "<group>"; };
+		3B16880119F82DD800096450 /* SearchLocationDictionaryPackageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocationDictionaryPackageParser.h; path = Classes/SearchLocationDictionaryPackageParser.h; sourceTree = "<group>"; };
+		3B16880219F82DD800096450 /* SearchLocationDictionaryPackageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocationDictionaryPackageParser.m; path = Classes/SearchLocationDictionaryPackageParser.m; sourceTree = "<group>"; };
+		3B16880419F8337F00096450 /* SearchLocationDictionaryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocationDictionaryParser.h; path = Classes/SearchLocationDictionaryParser.h; sourceTree = "<group>"; };
+		3B16880519F8337F00096450 /* SearchLocationDictionaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocationDictionaryParser.m; path = Classes/SearchLocationDictionaryParser.m; sourceTree = "<group>"; };
 		3B1EEADE19E66B0E000E4927 /* WeatherTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1EEAE219E66B0E000E4927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B1EEAE319E66B0E000E4927 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,6 +87,10 @@
 		3B347B0719EC2503006CF610 /* ForecastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
 		3B347B0919EC25C4006CF610 /* ForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForecastCell.h; path = Classes/ForecastCell.h; sourceTree = "<group>"; };
 		3B347B0A19EC25C4006CF610 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForecastCell.m; path = Classes/ForecastCell.m; sourceTree = "<group>"; };
+		3BC9EBDC19F02B14002F4A08 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = Classes/SearchViewController.h; sourceTree = "<group>"; };
+		3BC9EBDD19F02B14002F4A08 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Classes/SearchViewController.m; sourceTree = "<group>"; };
+		3BE54DB919F0114D00F5A20B /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = Classes/LocationViewController.h; sourceTree = "<group>"; };
+		3BE54DBA19F0114D00F5A20B /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = Classes/LocationViewController.m; sourceTree = "<group>"; };
 		3EBA7454993CBBA3AA0FBC81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		559194A863489C9E7539736A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -174,10 +189,16 @@
 			children = (
 				3B05D8A419E7D9DF00AB8B2B /* TestWeatherHTTPClient.h */,
 				3B05D8A519E7D9DF00AB8B2B /* TestWeatherHTTPClient.m */,
-				3B05D8E619E984FC00AB8B2B /* WeatherDictionaryParser.h */,
-				3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */,
 				3B05D8EC19E9859500AB8B2B /* WeatherDictionaryPackageParser.h */,
 				3B05D8ED19E9859500AB8B2B /* WeatherDictionaryPackageParser.m */,
+				3B05D8E619E984FC00AB8B2B /* WeatherDictionaryParser.h */,
+				3B05D8E719E984FC00AB8B2B /* WeatherDictionaryParser.m */,
+				3B1687FE19F810EF00096450 /* SearchLocationHTTPClient.h */,
+				3B1687FF19F810EF00096450 /* SearchLocationHTTPClient.m */,
+				3B16880119F82DD800096450 /* SearchLocationDictionaryPackageParser.h */,
+				3B16880219F82DD800096450 /* SearchLocationDictionaryPackageParser.m */,
+				3B16880419F8337F00096450 /* SearchLocationDictionaryParser.h */,
+				3B16880519F8337F00096450 /* SearchLocationDictionaryParser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -200,6 +221,10 @@
 				3B1EEB1119E6768B000E4927 /* SecondViewController.m */,
 				3B1EEB1819E6C452000E4927 /* ThirdViewController.h */,
 				3B1EEB1919E6C452000E4927 /* ThirdViewController.m */,
+				3BE54DB919F0114D00F5A20B /* LocationViewController.h */,
+				3BE54DBA19F0114D00F5A20B /* LocationViewController.m */,
+				3BC9EBDC19F02B14002F4A08 /* SearchViewController.h */,
+				3BC9EBDD19F02B14002F4A08 /* SearchViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -245,6 +270,7 @@
 				3B1EEADC19E66B0E000E4927 /* Resources */,
 				7F58A299BFC7449BB91AEDF4 /* Copy Pods Resources */,
 				3B1EEB1519E67723000E4927 /* ShellScript */,
+				3B1687FD19F7027900096450 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -336,6 +362,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3B1687FD19F7027900096450 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		3B1EEB1519E67723000E4927 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,14 +426,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B347B0B19EC25C4006CF610 /* ForecastCell.m in Sources */,
+				3B16880319F82DD800096450 /* SearchLocationDictionaryPackageParser.m in Sources */,
 				3B1EEB1319E6768B000E4927 /* SecondViewController.m in Sources */,
 				3B1EEB1A19E6C452000E4927 /* ThirdViewController.m in Sources */,
+				3B16880019F810EF00096450 /* SearchLocationHTTPClient.m in Sources */,
 				3B1EEAE719E66B0F000E4927 /* AppDelegate.m in Sources */,
 				3B1EEB1219E6768B000E4927 /* FirstViewController.m in Sources */,
 				3B05D8EE19E9859500AB8B2B /* WeatherDictionaryPackageParser.m in Sources */,
 				3B1EEAE419E66B0F000E4927 /* main.m in Sources */,
 				3B05D8A619E7D9DF00AB8B2B /* TestWeatherHTTPClient.m in Sources */,
+				3BC9EBDE19F02B14002F4A08 /* SearchViewController.m in Sources */,
 				3B05D8E819E984FC00AB8B2B /* WeatherDictionaryParser.m in Sources */,
+				3B16880619F8337F00096450 /* SearchLocationDictionaryParser.m in Sources */,
+				3BE54DBB19F0114D00F5A20B /* LocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

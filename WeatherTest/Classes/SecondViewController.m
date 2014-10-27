@@ -34,6 +34,9 @@
     // Change graphics
     [self applyAppearance];
     
+    // Swipe gesture
+    [self swipeGesture];
+    
     // Notify me if the JSON is ready
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:AFNetworkingTaskDidCompleteNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadBar) name:kCoordinatesWereDecodedToCityNameNotification object:nil];
@@ -65,6 +68,14 @@
     // setBackgroundImage must be defined to use to the image shadowImage method
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    
+    // Set already in storyboard, but better let it here and not forget again
+    // [self.navigationController.navigationBar setTranslucent:false];
+    
+    // Footer Separator
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-top"]];
+    separator.frame = CGRectMake(0, 0, 736, 1); // max width (iP6+) is 736p so its easiest to do set is fixed since we dont have a landscape mod in the app
+    self.tableView.tableFooterView = separator;
 }
 
 #pragma mark - tableView
@@ -114,16 +125,28 @@
     // Weather Image
     UIImage *image = [UIImage imageNamed:@"Sun_Big"];
     
-    if ([cell.forecastDescriptionLabel.text  isEqualToString: @"Cloudy"] || [cell.forecastDescriptionLabel.text isEqualToString:@"Partly Cloudy"]) {
+    if ([cell.forecastDescriptionLabel.text rangeOfString:@"cloudy" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         image = [UIImage imageNamed:@"Cloudy_Big"];
     }
     
-    else if ([cell.forecastDescriptionLabel.text isEqualToString:@"Windy"] || [cell.forecastDescriptionLabel.text isEqualToString:@"Partly Windy"]) {
+    else if ([cell.forecastDescriptionLabel.text rangeOfString:@"overcast" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Cloudy_Big"];
+    }
+    
+    else if ([cell.forecastDescriptionLabel.text rangeOfString:@"blow" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         image = [UIImage imageNamed:@"WInd_Big"];
     }
     
-    else if ([cell.forecastDescriptionLabel.text isEqualToString:@"Lightning"]) {
-        image = [UIImage imageNamed:@"Lightning-Big"];
+    else if ([cell.forecastDescriptionLabel.text rangeOfString:@"drizzle" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
+    }
+    
+    else if ([cell.forecastDescriptionLabel.text rangeOfString:@"shower" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
+    }
+    
+    else if ([cell.forecastDescriptionLabel.text rangeOfString:@"rain" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        image = [UIImage imageNamed:@"Lightning_Big"];
     }
     
     cell.forecastImageView.image = image;
@@ -139,6 +162,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Gestures
+
+- (void)swipeGesture {
+    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
+    [swipeRightRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipeRightRecognizer];
+    
+    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
+    [swipeLeftRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:swipeLeftRecognizer];
+}
+
+- (void)swipeRight {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] - 1)];
+}
+
+- (void)swipeLeft {
+    [self.tabBarController setSelectedIndex:([self.tabBarController selectedIndex] + 1)];
 }
 
 @end

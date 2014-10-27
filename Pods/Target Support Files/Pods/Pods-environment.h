@@ -48,3 +48,9 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 4
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// SWTableViewCell
+#define COCOAPODS_POD_AVAILABLE_SWTableViewCell
+#define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0
+#define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
+#define COCOAPODS_VERSION_PATCH_SWTableViewCell 5
+
